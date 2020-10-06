@@ -1,4 +1,5 @@
 #wrap { 
 	width: 900px; 
-	margin: 90 auto; 
+    margin: 90 auto; 
+    justify-content: center;
 }
