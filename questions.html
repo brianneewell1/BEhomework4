@@ -15,6 +15,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
   integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
   crossorigin="anonymous"></script>
+  <!---Link to JQuery-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!---Link to stylesheet and javascript-->
   <link rel="stylesheet" href=syle.css>
 <script src="script.js"></script>
@@ -27,22 +29,41 @@
 <!-- Highscore navbar -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">High Scores</a>
+  <span class="badge badge-dark">Time</span>
 </nav>
 
 <!---Question 1-->
   <div id="wrap">
 <h1>What data type is not supported by JavaScript?</h1>
-<button type="button" class="btn btn-info">Boolean</button>
+<button id="wrong" type="button" class="btn btn-info">Boolean</button>
 <br>
-<button type="button" class="btn btn-info">Novel</button>
+<button id="correct" type="button" class="btn btn-info">Novel</button>
 <br>
-<button type="button" class="btn btn-info">String</button>
+<button id="wrong" type="button" class="btn btn-info">String</button>
 <br>
-<button type="button" class="btn btn-info">Number</button>
-  </div>
+<button id="correct" type="button" class="btn btn-info">Number</button>
 
-  
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+
+//Track which button is clicked
+
+var correct = 0;
+var wrong = 0;
+
+//<!---Display if answer is correct and move forward-->
+
+$("#wrong").on("click", function() {
+wrong++;
+alert("That's wrong");
+
+$("#correct").on("click", function() {
+correct++;
+alert("That's Correct");
     
+</script>
 
   </body>
   </html>
