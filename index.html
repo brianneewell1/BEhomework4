@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Quiz</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+
 <body>
 
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#" id="viewScore" >High Scores</a>
-      </nav>
+        <a class="navbar-brand" href="#" id="viewScore">High Scores</a>
+    </nav>
 
     <div id="container">
         <div id="title">Harry Potter Trivia Time!</div>
@@ -32,10 +34,31 @@
             <div id="progress"></div>
         </div>
         <div id="scoreContainer" style="display: none"></div>
-        <div id="highScore" style="display: none"></div>
-        <button id="initials" style="display: none">Submit Your Initials</button>
-        
+
+        <!--Button to click to input initials-->
+        <button id="initialsButton" style="display: none">Submit Your Initials</button>
+
+        <!--Form that collects initials-->
+        <div id="initialInput" class="card" style="display: none">
+            <form method="POST">
+                <div class="input-group">
+                    <label for="nameInput">Initials</label>
+                    <input type="text" name="initials" id="nameInput" />
+                </div>
+
+                <!--Enter button for initials-->
+                <button id="enter">Enter</button>
+            </form>
+        </div>
+
+        <!--High Score storage-->
+        <div class="card" id="highScore" style="display: none">
+            <h2>High Scores:</h2>
+            <p><strong></strong> <span id="savedScores"></span></p>
+        </div>
     </div>
+
     <script src="quiz.js"></script>
 </body>
+
 </html>

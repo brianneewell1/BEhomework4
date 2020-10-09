@@ -9,7 +9,7 @@ const counter = document.getElementById("counter");
 const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
-const initials = document.getElementById("initials");
+const initialsButton = document.getElementById("initialsButton");
 
 // create our questions
 let questions = [
@@ -20,7 +20,7 @@ let questions = [
         choiceC: "865",
         correct: "A"
     }, {
-        question: "Dumbledore has a scare above his left knee that is a perfect map of what?",
+        question: "Dumbledore has a scar above his left knee that is a perfect map of what?",
         choiceA: "Diagon Alley",
         choiceB: "The London Underground",
         choiceC: "King's Cross Station",
@@ -123,8 +123,7 @@ if (runningQuestion < lastQuestion) {
     // end the quiz and show the score
     clearInterval(TIMER);
     scoreRender();
-    enterInitials();
-}
+    }
 }
 
 // answer is correct
@@ -140,6 +139,7 @@ function answerIsWrong() {
 // score render
 function scoreRender() {
     scoreDiv.style.display = "block";
+    initialsButton.style.display = "block";
 
     // calculate the amount of question percent answered by the user
     const scorePerCent = Math.round(100 * score / questions.length);
@@ -148,6 +148,49 @@ function scoreRender() {
 }
 
 //enter initials
-function enterInitials(){
-    initials.style.display = "block";
+function showButton(){
+    initialsButton.style.display = "block";
 }
+
+//highscore code
+var initialInput = document.querySelector("#initialInput");
+var nameInput = document.querySelector("#nameInput");
+var enter = document.querySelector("#enter");
+var userScore = document.querySelector("#savedScores");
+var highScore = document.querySelector("#highScore");
+var savedScores = document.querySelector("#savedScores");
+
+renderLastRegistered();
+
+function displayMessage(type, message) {
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
+}
+
+function renderLastRegistered() {
+  var initialInput = localStorage.getItem("initialInput");
+ 
+
+  if (initialInput === null) {
+    return;
+  }
+
+  userEmailSpan.textContent = email;
+  
+}
+
+signUpButton.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var email = document.querySelector("#email").value;
+  
+
+  if (email === "") {
+    displayMessage("error", "Email cannot be blank");
+   } else {
+    displayMessage("success", "Registered successfully");
+
+    localStorage.setItem("email", email);
+      renderLastRegistered();
+  }
+});
