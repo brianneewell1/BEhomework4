@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#" id="viewScore" >High Scores</a>
+      </nav>
+
+    <div id="container">
+        <div id="title">Harry Potter Trivia Time!</div>
+        <div id="subtitle">You have 45 seconds to answer 3 questions only a true fan would know</div>>
+        <div id="start">Start Quiz!</div>
+        <div id="quiz" style="display: none">
+            <div id="question"></div>
+            <div id="choices">
+                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+            </div>
+            <div id="timer">
+                <div id="counter"></div>
+                <div id="btimeGauge"></div>
+                <div id="timeGauge"></div>
+            </div>
+            <div id="progress"></div>
+        </div>
+        <div id="scoreContainer" style="display: none"></div>
+        <div id="highScore" style="display: none"></div>
+        <button id="initials" style="display: none">Submit Your Initials</button>
+        
+    </div>
+    <script src="quiz.js"></script>
+</body>
+</html>
