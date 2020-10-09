@@ -148,9 +148,11 @@ function scoreRender() {
 }
 
 //enter initials
-function showButton(){
-    initialsButton.style.display = "block";
+function showInput(){
+    initialInput.style.display = "block";
 }
+
+initialsButton.addEventListener("click", showInput);
 
 //highscore code
 var initialInput = document.querySelector("#initialInput");
@@ -162,11 +164,6 @@ var savedScores = document.querySelector("#savedScores");
 
 renderLastRegistered();
 
-function displayMessage(type, message) {
-  msgDiv.textContent = message;
-  msgDiv.setAttribute("class", type);
-}
-
 function renderLastRegistered() {
   var initialInput = localStorage.getItem("initialInput");
  
@@ -175,22 +172,26 @@ function renderLastRegistered() {
     return;
   }
 
-  userEmailSpan.textContent = email;
+  userScore.textContent = initialsInput;
   
 }
 
-signUpButton.addEventListener("click", function(event) {
+enter.addEventListener("click", function(event) {
   event.preventDefault();
 
-  var email = document.querySelector("#email").value;
+  var nameInput = document.querySelector("#nameInput").value;
   
+  function displayMessage(type, message){
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
+  }
 
-  if (email === "") {
-    displayMessage("error", "Email cannot be blank");
+  if (nameInput === "") {
+    displayMessage("error", "Field cannot be blank");
    } else {
-    displayMessage("success", "Registered successfully");
+    displayMessage("success", "Your score has been saved");
 
-    localStorage.setItem("email", email);
+    localStorage.setItem("nameInput", nameInput);
       renderLastRegistered();
   }
 });
