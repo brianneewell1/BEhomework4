@@ -58,8 +58,6 @@ function renderQuestion() {
 
 start.addEventListener("click", startQuiz);
 
-goBack.addEventListener("click", startQuiz);
-
 // start quiz
 function startQuiz() {
     start.style.display = "none";
@@ -148,6 +146,8 @@ function scoreRender() {
     const scorePerCent = Math.round(100 * score / questions.length);
 
     scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
+
+    localStorage.setItem("scorePerCent", scorePerCent);
 }
 
 //enter initials
@@ -187,24 +187,16 @@ enter.addEventListener("click", function (event) {
     }
 });
 
-localStorage.setItem("scorePercent", scorePercent);
-
-//display saved scores
-viewScore.addEventListener("click", renderHighScore);
-
-function renderHighScore() {
-    var userInitials = localStorage.printItem("nameInput");
-    var userScore = localStorage.printItem("scorePercent");
-}
-
-//high score click, hide other pages
-viewScore.addEventListener("click", function (event) {
-    event.preventDefault();
-})
+//high score click, hide other pages, show high scores
 
 viewScore.addEventListener("click", openScore);
 
 function openScore() {
+    var userInitials = localStorage.getItem("nameInput");
+    var userScore = localStorage.getItem("scorePerCent");
+    document.getElementById("savedScores").textContent= userInitials + userScore;
+    console.log("userScore",userScore )
+    console.log("userInitials", userInitials)
     start.style.display = "none";
     title.style.display = "none";
     subtitle.style.display = "none";
@@ -218,3 +210,10 @@ function openScore() {
     progress.style.display = "none";
 }
 
+//go back button
+goBack.addEventListener("click", goBackButton);
+
+function goBackButton() {
+    history.go(0);
+}
+    
