@@ -10,6 +10,7 @@ const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 const initialsButton = document.getElementById("initialsButton");
+const goBack = document.getElementById("goBack");
 
 // create our questions
 let questions = [
@@ -56,6 +57,8 @@ function renderQuestion() {
 }
 
 start.addEventListener("click", startQuiz);
+
+goBack.addEventListener("click", startQuiz);
 
 // start quiz
 function startQuiz() {
@@ -152,7 +155,7 @@ function showInput() {
     initialInput.style.display = "block";
 }
 
-function container(){
+function container() {
     container.style.display = "none";
 }
 initialsButton.addEventListener("click", showInput);
@@ -184,6 +187,16 @@ enter.addEventListener("click", function (event) {
     }
 });
 
+localStorage.setItem("scorePercent", scorePercent);
+
+//display saved scores
+viewScore.addEventListener("click", renderHighScore);
+
+function renderHighScore() {
+    var userInitials = localStorage.printItem("nameInput");
+    var userScore = localStorage.printItem("scorePercent");
+}
+
 //high score click, hide other pages
 viewScore.addEventListener("click", function (event) {
     event.preventDefault();
@@ -193,10 +206,15 @@ viewScore.addEventListener("click", openScore);
 
 function openScore() {
     start.style.display = "none";
-    renderQuestion();
     title.style.display = "none";
     subtitle.style.display = "none";
     highScore.style.display = "block";
+    initialInput.style.display = "none";
+    enter.style.display = "none";
+    quiz.style.display = "none";
+    question.style.display = "none";
+    choices.style.display = "none";
+    timer.style.display = "none";
+    progress.style.display = "none";
 }
-
 
