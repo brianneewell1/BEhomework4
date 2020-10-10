@@ -106,23 +106,23 @@ function checkAnswer(answer) {
         // change progress color to green
         answerIsCorrect();
     }
-if 
-    // answer is wrong
-    // change progress color to red
-    //subtract time
-    (answer != questions[runningQuestion].correct) {
+    if
+        // answer is wrong
+        // change progress color to red
+        //subtract time
+        (answer != questions[runningQuestion].correct) {
         count--;
-    
-    answerIsWrong();
-}
 
-if (runningQuestion < lastQuestion) {
-    runningQuestion++;
-    renderQuestion();
-} else {
-    // end the quiz and show the score
-    clearInterval(TIMER);
-    scoreRender();
+        answerIsWrong();
+    }
+
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else {
+        // end the quiz and show the score
+        clearInterval(TIMER);
+        scoreRender();
     }
 }
 
@@ -148,50 +148,55 @@ function scoreRender() {
 }
 
 //enter initials
-function showInput(){
+function showInput() {
     initialInput.style.display = "block";
 }
 
+function container(){
+    container.style.display = "none";
+}
 initialsButton.addEventListener("click", showInput);
 
-//highscore code
 var initialInput = document.querySelector("#initialInput");
 var nameInput = document.querySelector("#nameInput");
 var enter = document.querySelector("#enter");
 var userScore = document.querySelector("#savedScores");
 var highScore = document.querySelector("#highScore");
 var savedScores = document.querySelector("#savedScores");
+var msgDiv = document.querySelector("#msg");
 
-renderLastRegistered();
+enter.addEventListener("click", function (event) {
+    event.preventDefault();
 
-function renderLastRegistered() {
-  var initialInput = localStorage.getItem("initialInput");
- 
+    var nameInput = document.querySelector("#nameInput").value;
 
-  if (initialInput === null) {
-    return;
-  }
+    function displayMessage(type, message) {
+        msgDiv.textContent = message;
+        msgDiv.setAttribute("class", type);
+    }
 
-  userScore.textContent = initialsInput;
-  
+    if (nameInput === "") {
+        displayMessage("error", "Field cannot be blank");
+    } else {
+        displayMessage("success", "Your score has been saved");
+
+        localStorage.setItem("nameInput", nameInput);
+    }
+});
+
+//high score click, hide other pages
+viewScore.addEventListener("click", function (event) {
+    event.preventDefault();
+})
+
+viewScore.addEventListener("click", openScore);
+
+function openScore() {
+    start.style.display = "none";
+    renderQuestion();
+    title.style.display = "none";
+    subtitle.style.display = "none";
+    highScore.style.display = "block";
 }
 
-enter.addEventListener("click", function(event) {
-  event.preventDefault();
 
-  var nameInput = document.querySelector("#nameInput").value;
-  
-  function displayMessage(type, message){
-    msgDiv.textContent = message;
-    msgDiv.setAttribute("class", type);
-  }
-
-  if (nameInput === "") {
-    displayMessage("error", "Field cannot be blank");
-   } else {
-    displayMessage("success", "Your score has been saved");
-
-    localStorage.setItem("nameInput", nameInput);
-      renderLastRegistered();
-  }
-});
