@@ -2,6 +2,14 @@
 
 A 3 question Harry Potter quiz featuring a timer, feedback for when questions are answered correctly or incorrectly, and a high score page. 
 
+# Live Site
+https://brianneewell1.github.io/Harry-Potter-Quiz/
+
+# Technologies Used
+JavaScript
+HTML
+CSS
+
 # User Story
 I WANT to take a timed quiz on Harry Potter trivia that stores high scores
 SO THAT I can compare my knowledge to others
